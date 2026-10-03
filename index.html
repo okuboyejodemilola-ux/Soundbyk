@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Sound By K | DJ Services for Weddings, Birthdays and All Events</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#FBF5EC; --bg2:#F3EADB; --ink:#1E1236; --muted:#5E5575;
+  --surface:#FFFFFF; --line:#E1D6C3; --accent:#E8336D; --accent-ink:#FFFFFF;
+  --gold:#C98A00; --hero-bg:#1E1236; --hero-ink:#FBF5EC; --hero-gold:#FFB81F;
+  --radius:18px;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#150C27; --bg2:#1D1235; --ink:#F7EFE3; --muted:#B7ABCB;
+    --surface:#24183F; --line:#3A2D5C; --gold:#FFB81F; --hero-bg:#0F081D;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#150C27; --bg2:#1D1235; --ink:#F7EFE3; --muted:#B7ABCB;
+  --surface:#24183F; --line:#3A2D5C; --gold:#FFB81F; --hero-bg:#0F081D;
+}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"DM Sans",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased}
+h1,h2,h3{font-family:"Bricolage Grotesque","DM Sans",system-ui,sans-serif;line-height:1.05;margin:0;letter-spacing:-.02em}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--gold);outline-offset:3px;border-radius:6px}
+.wrap{max-width:1080px;margin:0 auto;padding:0 22px}
+
+/* top bar */
+.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--hero-bg);color:var(--hero-ink)}
+.bar .wrap{display:flex;align-items:center;justify-content:space-between;height:58px}
+.logo{font-family:"Bricolage Grotesque",sans-serif;font-weight:800;font-size:21px;text-decoration:none;letter-spacing:-.02em}
+.logo span{color:var(--hero-gold)}
+.call{background:var(--hero-gold);color:#1E1236;text-decoration:none;font-weight:700;font-size:15px;padding:9px 16px;border-radius:999px}
+
+/* hero */
+.hero{background:var(--hero-bg);color:var(--hero-ink);overflow:hidden;position:relative}
+.hero .wrap{display:grid;grid-template-columns:1.15fr .85fr;gap:30px;align-items:center;padding-top:56px;padding-bottom:64px}
+.hero h1{font-size:clamp(44px,8.2vw,92px);font-weight:800}
+.hero p.lead{font-size:19px;max-width:30em;color:rgba(251,245,236,.82);margin:22px 0 30px}
+.btns{display:flex;flex-wrap:wrap;gap:12px}
+.btn{display:inline-block;border:0;cursor:pointer;font:700 17px "DM Sans",sans-serif;padding:15px 26px;border-radius:999px;text-decoration:none;text-align:center}
+.btn.primary{background:var(--accent);color:var(--accent-ink)}
+.btn.ghost{background:transparent;color:var(--hero-ink);box-shadow:inset 0 0 0 2px rgba(251,245,236,.4)}
+.btn.primary:hover{filter:brightness(1.08)}
+
+/* record */
+.deck{position:relative;aspect-ratio:1;max-width:380px;width:100%;margin:0 auto}
+.vinyl{position:absolute;inset:0;border-radius:50%;
+  background:
+   radial-gradient(circle at center,#1E1236 0 11%,transparent 11.5%),
+   repeating-radial-gradient(circle at center,#0b0614 0 3px,#1a1030 3px 5px);
+  box-shadow:0 0 0 6px #2a1d48,0 30px 70px rgba(0,0,0,.5);
+  animation:spin 5.5s linear infinite}
+.vinyl::before{content:"";position:absolute;inset:0;border-radius:50%;
+  background:conic-gradient(from 20deg,transparent 0 20%,rgba(255,255,255,.09) 25%,transparent 32% 70%,rgba(255,255,255,.07) 75%,transparent 82%)}
+.label{position:absolute;inset:31%;border-radius:50%;background:var(--accent);display:grid;place-items:center;
+  font-family:"Bricolage Grotesque",sans-serif;font-weight:800;font-size:clamp(34px,7vw,56px);color:#fff}
+.label::after{content:"";position:absolute;width:9%;height:9%;border-radius:50%;background:var(--hero-bg);top:50%;left:50%;transform:translate(-50%,-50%);opacity:.0}
+.eq{position:absolute;left:-4%;right:-4%;bottom:-26px;display:flex;gap:5px;align-items:flex-end;justify-content:center;height:54px}
+.eq i{width:9px;background:var(--hero-gold);border-radius:4px 4px 0 0;height:20%;animation:bounce 1.1s ease-in-out infinite}
+.eq i:nth-child(3n){background:var(--accent)}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes bounce{0%,100%{height:15%}50%{height:100%}}
+@media (prefers-reduced-motion:reduce){.vinyl,.eq i{animation:none}.eq i{height:55%}}
+
+/* sections */
+section{padding:72px 0}
+.alt{background:var(--bg2)}
+h2{font-size:clamp(32px,5vw,50px);font-weight:700;margin-bottom:14px}
+.sub{color:var(--muted);max-width:36em;margin:0 0 36px}
+
+.events{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:14px}
+.ev{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:20px 20px 18px;text-align:left;font:inherit;color:inherit;cursor:pointer;display:block;width:100%}
+.ev b{display:block;font-family:"Bricolage Grotesque",sans-serif;font-size:21px;margin-bottom:4px}
+.ev span{color:var(--muted);font-size:15px;line-height:1.45;display:block}
+.ev:hover{border-color:var(--accent)}
+.ev .em{font-size:28px;margin-bottom:8px;display:block}
+
+.pk{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:18px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:28px}
+.card.feat{background:var(--hero-bg);color:var(--hero-ink);border-color:var(--hero-bg)}
+.card.feat li::before{color:var(--hero-gold)}
+.card h3{font-size:26px;margin-bottom:6px}
+.card p{margin:0 0 16px;color:var(--muted);font-size:15px}
+.card.feat p{color:rgba(251,245,236,.75)}
+.card ul{list-style:none;margin:0;padding:0}
+.card li{padding:5px 0 5px 26px;position:relative;font-size:16px}
+.card li::before{content:"\2713";position:absolute;left:0;color:var(--accent);font-weight:700}
+.tag{display:inline-block;background:var(--hero-gold);color:#1E1236;font-weight:700;font-size:13px;padding:3px 10px;border-radius:999px;margin-bottom:10px}
+
+.why{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:26px}
+.why h3{font-size:22px;margin-bottom:6px}
+.why p{margin:0;color:var(--muted);font-size:16px}
+
+/* booking */
+.book{display:grid;grid-template-columns:.8fr 1.2fr;gap:40px;align-items:start}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:24px;padding:28px}
+form{display:grid;gap:16px}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+label{font-weight:700;font-size:15px;display:block;margin-bottom:6px}
+input,select,textarea{width:100%;font:inherit;font-size:16px;color:var(--ink);background:var(--bg);border:1.5px solid var(--line);border-radius:12px;padding:13px 14px}
+textarea{min-height:92px;resize:vertical}
+input:focus,select:focus,textarea:focus{outline:3px solid var(--gold);outline-offset:1px;border-color:var(--gold)}
+.extras{display:flex;flex-wrap:wrap;gap:10px}
+.extras label{display:flex;align-items:center;gap:8px;margin:0;font-weight:500;background:var(--bg);border:1.5px solid var(--line);border-radius:999px;padding:8px 14px;cursor:pointer;font-size:15px}
+.extras input{width:auto;accent-color:var(--accent)}
+.err{color:#C41E4F;font-size:14px;margin-top:5px;display:none}
+.bad .err{display:block}
+.bad input,.bad select{border-color:#C41E4F}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .err{color:#FF7A9E}}
+.contact-big{font-family:"Bricolage Grotesque",sans-serif;font-size:clamp(28px,4vw,38px);font-weight:800;display:block;text-decoration:none;margin:10px 0 4px}
+.steps{margin:26px 0 0;padding:0;list-style:none;counter-reset:s}
+.steps li{counter-increment:s;padding:0 0 16px 46px;position:relative}
+.steps li::before{content:counter(s);position:absolute;left:0;top:0;width:32px;height:32px;border-radius:50%;background:var(--accent);color:#fff;font-weight:700;display:grid;place-items:center;font-size:15px}
+.steps b{display:block}
+.steps span{color:var(--muted);font-size:15px}
+
+/* confirm */
+#done{display:none}
+#done.show{display:block}
+#form.hide{display:none}
+.preview{white-space:pre-wrap;background:var(--bg);border:1.5px dashed var(--line);border-radius:14px;padding:16px;font-size:15px;margin:14px 0 18px}
+.send{display:grid;gap:10px}
+.wa{background:#1FA855;color:#fff}
+.out{background:transparent;color:var(--ink);box-shadow:inset 0 0 0 2px var(--line)}
+.note{font-size:14px;color:var(--muted);margin-top:12px}
+
+footer{background:var(--hero-bg);color:var(--hero-ink);padding:44px 0 calc(44px + env(safe-area-inset-bottom,0px))}
+footer .wrap{display:flex;flex-wrap:wrap;gap:20px;justify-content:space-between;align-items:center}
+footer a{color:var(--hero-gold);font-weight:700;text-decoration:none}
+
+@media (max-width:820px){
+  .hero .wrap{grid-template-columns:1fr;padding-top:36px;padding-bottom:70px}
+  .deck{max-width:260px;order:-1}
+  .book{grid-template-columns:1fr}
+  .row{grid-template-columns:1fr}
+  section{padding:56px 0}
+}
+</style>
+</head>
+<body>
+
+<div class="bar">
+  <div class="wrap">
+    <a class="logo" href="#top">Sound by <span>K</span></a>
+    <a class="call" href="tel:07080059947">Call 07080059947</a>
+  </div>
+</div>
+
+<header class="hero" id="top">
+  <div class="wrap">
+    <div>
+      <h1>The right music for your big day.</h1>
+      <p class="lead">Sound by K brings the DJ, the speakers and the energy to your wedding, birthday, naming ceremony, burial, thanksgiving and every other event worth celebrating or remembering.</p>
+      <div class="btns">
+        <a class="btn primary" href="#book">Book a DJ</a>
+        <a class="btn ghost" href="tel:07080059947">Call 07080059947</a>
+      </div>
+    </div>
+    <div class="deck" aria-hidden="true">
+      <div class="vinyl"></div>
+      <div class="label">K</div>
+      <div class="eq" id="eq"></div>
+    </div>
+  </div>
+</header>
+
+<section id="events">
+  <div class="wrap">
+    <h2>Events we play for</h2>
+    <p class="sub">Tap your event to start your booking. Don't see yours? Choose "Other event" and tell us about it.</p>
+    <div class="events" id="evgrid"></div>
+  </div>
+</section>
+
+<section class="alt" id="packages">
+  <div class="wrap">
+    <h2>Choose what fits your event</h2>
+    <p class="sub">Every package comes with a professional DJ. Tell us your budget when you book and we will send you a clear price.</p>
+    <div class="pk">
+      <div class="card">
+        <h3>Basic</h3>
+        <p>For small gatherings and home events.</p>
+        <ul><li>DJ and music selection</li><li>Speakers and mixer</li><li>Wireless microphone</li><li>Up to 4 hours</li></ul>
+      </div>
+      <div class="card feat">
+        <span class="tag">Most booked</span>
+        <h3>Standard</h3>
+        <p>For weddings, birthdays and ceremonies.</p>
+        <ul><li>Everything in Basic</li><li>Bigger speaker setup</li><li>MC support on request</li><li>Party lighting</li><li>Up to 6 hours</li></ul>
+      </div>
+      <div class="card">
+        <h3>Premium</h3>
+        <p>For large halls and full-day events.</p>
+        <ul><li>Everything in Standard</li><li>Full stage sound system</li><li>Dance floor lighting and effects</li><li>Backup equipment on site</li><li>Full event coverage</li></ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>Why people book Sound by K</h2>
+    <p class="sub">&nbsp;</p>
+    <div class="why" style="margin-top:-36px">
+      <div><h3>We read the room</h3><p>A wedding, a naming and a burial each need a different mood. We play what suits your crowd and your culture.</p></div>
+      <div><h3>We arrive early</h3><p>Setup and sound check are done before your guests walk in.</p></div>
+      <div><h3>Your playlist, your way</h3><p>Send your must-play songs and your do-not-play list. We follow it.</p></div>
+      <div><h3>Clear communication</h3><p>One phone number, quick replies, and no surprises on the day.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="alt" id="book">
+  <div class="wrap book">
+    <div>
+      <h2>Book your DJ</h2>
+      <p class="sub" style="margin-bottom:10px">Fill the form and send it to us on WhatsApp or by text message. We will reply to confirm availability and price.</p>
+      <a class="contact-big" href="tel:07080059947">07080059947</a>
+      <div style="color:var(--muted);font-size:15px">Prefer to talk? Call us any time.</div>
+      <ol class="steps">
+        <li><b>Fill the form</b><span>Tell us the event, date and place.</span></li>
+        <li><b>Send it to us</b><span>Your details open in WhatsApp or messages, ready to send.</span></li>
+        <li><b>We confirm</b><span>We check the date and reply with your price.</span></li>
+      </ol>
+    </div>
+
+    <div class="panel">
+      <form id="form" novalidate>
+        <div class="row">
+          <div id="f-name"><label for="name">Your name</label><input id="name" autocomplete="name" placeholder="e.g. Chioma Okafor"><div class="err">Enter your name.</div></div>
+          <div id="f-phone"><label for="phone">Your phone number</label><input id="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="e.g. 0803 000 0000"><div class="err">Enter a phone number we can reach.</div></div>
+        </div>
+        <div class="row">
+          <div id="f-event"><label for="event">Type of event</label>
+            <select id="event">
+              <option value="">Choose event</option>
+              <option>Wedding</option><option>Birthday</option><option>Naming ceremony</option>
+              <option>Burial / funeral</option><option>Thanksgiving</option><option>Anniversary</option>
+              <option>Graduation</option><option>Church or religious program</option>
+              <option>Corporate event</option><option>Club or house party</option><option>Other event</option>
+            </select><div class="err">Choose your type of event.</div></div>
+          <div id="f-date"><label for="date">Event date</label><input id="date" type="date"><div class="err">Pick the event date.</div></div>
+        </div>
+        <div class="row">
+          <div><label for="venue">Venue and town</label><input id="venue" placeholder="e.g. Civic Hall, Enugu"></div>
+          <div><label for="guests">Number of guests</label>
+            <select id="guests"><option value="">Not sure yet</option><option>Under 50</option><option>50 to 150</option><option>150 to 300</option><option>300 to 500</option><option>Over 500</option></select></div>
+        </div>
+        <div class="row">
+          <div><label for="pkg">Package</label>
+            <select id="pkg"><option value="">Not sure, advise me</option><option>Basic</option><option>Standard</option><option>Premium</option></select></div>
+          <div><label for="time">Start time</label><input id="time" type="time"></div>
+        </div>
+        <div>
+          <label>Add-ons</label>
+          <div class="extras">
+            <label><input type="checkbox" value="MC"> MC</label>
+            <label><input type="checkbox" value="Extra lighting"> Extra lighting</label>
+            <label><input type="checkbox" value="Live band sound setup"> Band setup</label>
+            <label><input type="checkbox" value="Outdoor setup"> Outdoor setup</label>
+          </div>
+        </div>
+        <div><label for="notes">Anything else we should know?</label><textarea id="notes" placeholder="Favourite songs, music style, language, special moments..."></textarea></div>
+        <button class="btn primary" type="submit">Review my booking</button>
+      </form>
+
+      <div id="done">
+        <h3 style="font-size:28px;margin-bottom:6px">Almost done</h3>
+        <p style="margin:0;color:var(--muted)">Check your details, then send them to Sound by K.</p>
+        <div class="preview" id="preview"></div>
+        <div class="send">
+          <a class="btn wa" id="wa" href="#" target="_blank" rel="noopener">Send on WhatsApp</a>
+          <a class="btn out" id="sms" href="#">Send as text message</a>
+          <button class="btn out" id="copy" type="button">Copy booking details</button>
+          <button class="btn out" id="edit" type="button">Edit details</button>
+        </div>
+        <div class="note" id="note">Your booking is not confirmed until Sound by K replies.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div><div class="logo" style="font-size:24px">Sound by <span>K</span></div><div style="opacity:.75">DJ services for every occasion</div></div>
+    <a href="tel:07080059947">07080059947</a>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var PHONE_LOCAL="07080059947", PHONE_INTL="2347080059947";
+
+  // equalizer bars
+  var eq=document.getElementById("eq");
+  for(var i=0;i<17;i++){var b=document.createElement("i");b.style.animationDelay=(-(i*0.37)%1.1)+"s";b.style.animationDuration=(0.8+(i%5)*0.15)+"s";eq.appendChild(b);}
+
+  // event cards
+  var events=[
+    ["💍","Wedding","Reception, cocktail and the first dance."],
+    ["🎂","Birthday","From kids' parties to milestone celebrations."],
+    ["👶","Naming ceremony","Joyful music to welcome the new baby."],
+    ["🕊️","Burial / funeral","Calm, respectful music and clear sound for tributes."],
+    ["🙏","Thanksgiving","Praise and celebration music for your guests."],
+    ["🥂","Anniversary","Music that matches the memories."],
+    ["🎓","Graduation","Celebrate the achievement in style."],
+    ["⛪","Church or religious program","Clean sound for services and programs."],
+    ["🏢","Corporate event","Launches, dinners and staff parties."],
+    ["🎧","Club or house party","High energy all night."],
+    ["✨","Other event","Tell us what you are planning."]
+  ];
+  var grid=document.getElementById("evgrid");
+  events.forEach(function(e){
+    var btn=document.createElement("button");btn.type="button";btn.className="ev";
+    btn.innerHTML='<span class="em" aria-hidden="true">'+e[0]+'</span><b>'+e[1]+'</b><span>'+e[2]+'</span>';
+    btn.addEventListener("click",function(){
+      document.getElementById("event").value=e[1];
+      document.getElementById("book").scrollIntoView({behavior:"smooth"});
+      setTimeout(function(){document.getElementById("name").focus({preventScroll:true});},500);
+    });
+    grid.appendChild(btn);
+  });
+
+  // min date = today
+  var d=new Date();d.setMinutes(d.getMinutes()-d.getTimezoneOffset());
+  document.getElementById("date").min=d.toISOString().slice(0,10);
+
+  function val(id){return document.getElementById(id).value.trim();}
+  function mark(id,ok){document.getElementById(id).classList.toggle("bad",!ok);return ok;}
+
+  function prettyDate(s){
+    try{var p=s.split("-");var dt=new Date(+p[0],+p[1]-1,+p[2]);
+      return dt.toLocaleDateString("en-GB",{weekday:"long",day:"numeric",month:"long",year:"numeric"});}catch(e){return s;}
+  }
+  function prettyTime(t){
+    if(!t)return"";var p=t.split(":"),h=+p[0],m=p[1],ap=h>=12?"PM":"AM";h=h%12||12;return h+":"+m+" "+ap;
+  }
+
+  function buildMessage(){
+    var extras=[].slice.call(document.querySelectorAll(".extras input:checked")).map(function(c){return c.value;});
+    var lines=["Hello Sound by K, I would like to book a DJ.","",
+      "Name: "+val("name"),
+      "Phone: "+val("phone"),
+      "Event: "+val("event"),
+      "Date: "+prettyDate(val("date"))];
+    if(val("time"))lines.push("Start time: "+prettyTime(val("time")));
+    if(val("venue"))lines.push("Venue: "+val("venue"));
+    if(val("guests"))lines.push("Guests: "+val("guests"));
+    if(val("pkg"))lines.push("Package: "+val("pkg"));
+    if(extras.length)lines.push("Add-ons: "+extras.join(", "));
+    if(val("notes"))lines.push("Notes: "+val("notes"));
+    lines.push("","Please confirm if you are available and send me the price. Thank you.");
+    return lines.join("\n");
+  }
+
+  var msg="";
+  document.getElementById("form").addEventListener("submit",function(ev){
+    ev.preventDefault();
+    var ok=true;
+    ok=mark("f-name",!!val("name"))&&ok;
+    var digits=val("phone").replace(/\D/g,"");
+    ok=mark("f-phone",digits.length>=7)&&ok;
+    ok=mark("f-event",!!val("event"))&&ok;
+    ok=mark("f-date",!!val("date"))&&ok;
+    if(!ok){var first=document.querySelector(".bad");if(first)first.scrollIntoView({behavior:"smooth",block:"center"});return;}
+    msg=buildMessage();
+    document.getElementById("preview").textContent=msg;
+    document.getElementById("wa").href="https://wa.me/"+PHONE_INTL+"?text="+encodeURIComponent(msg);
+    document.getElementById("sms").href="sms:"+PHONE_LOCAL+"?&body="+encodeURIComponent(msg);
+    document.getElementById("form").classList.add("hide");
+    document.getElementById("done").classList.add("show");
+    document.getElementById("book").scrollIntoView({behavior:"smooth"});
+  });
+
+  document.getElementById("edit").addEventListener("click",function(){
+    document.getElementById("done").classList.remove("show");
+    document.getElementById("form").classList.remove("hide");
+  });
+
+  document.getElementById("copy").addEventListener("click",function(){
+    var note=document.getElementById("note");
+    function ok(){note.textContent="Copied. Paste it into a message to "+PHONE_LOCAL+".";}
+    function fail(){note.textContent="Could not copy. Press and hold the text above to copy it.";}
+    try{
+      if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(msg).then(ok,fail);}
+      else{var t=document.createElement("textarea");t.value=msg;document.body.appendChild(t);t.select();document.execCommand("copy");document.body.removeChild(t);ok();}
+    }catch(e){fail();}
+  });
+})();
+</script>
+</body>
+</html>
